@@ -1,0 +1,3 @@
+Site	Direction_a	Direction_b
+NZSINR	235	276
+NZSIBT	295	18
