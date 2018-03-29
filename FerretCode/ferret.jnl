@@ -1,0 +1,61 @@
+ ! NOAA/PMEL TMAP
+ ! FERRET v7 (optimized)
+ ! Darwin 15.6.0 64-bit - 07/26/16
+ ! 29-Mar-18 19:03     
+
+SET DATA "/Data/CMIP5/climdiff/modeldiff/tas_Amon_multimodel_2070-2099_mclimdiff_1971-2000_woagrid.nc
+SET DATA "/Data/CMIP5/climdiff/modeldiff/tas_Amon_multimodel_2070-2099_mclimdiff_1971-2000_woagrid.nc"
+show data
+shade tas[l=1]
+shade tas[l=2]
+shade tas[l=3]
+shade tas[l=4]
+shade tas[l=5]
+cancel data/all
+SET DATA "/Data/CMIP5/climdiff/modeldiff/tas_Amon_multimodel_2070-2099_mclimdiff_1971-2000_woagrid.nc", "/Data/CMIP5/climdiff/modeldiff/thetao_Omon_CESM1-BGC_r1i1p1_2071-2100_climdiff_1971-2000_woagrid.nc"
+show data
+shade o2[k=1,l=1]
+shade o2[k=2,l=1]
+cancel data/all
+SET DATA "/Data/CMIP5/climdiff/modeldiff/tas_Amon_multimodel_2070-2099_mclimdiff_1971-2000_woagrid.nc", "/Data/WOA/WOA13/WOA2013_annual_temp.nc"
+show data
+shade T_AN[k=1]
+let mask1 = T_AN * 0
+let mask2 = missing(mask1, 1)
+shade mask2
+shade mask2[l=1]
+let mask1 = T_AN[k=1] * 0
+let mask2 = missing(mask1, 1)
+shade mask2
+let mask3 = ignore0(mask2)
+shade mask3
+shade = mask3[x=175:180, y=42S:70S]
+shade mask3[x=175:180, y=42S:70S]
+shade mask3[x=175:180, y=-70:042]
+shade mask3[x=175:180, y=-70:-42]
+shade mask3[x=165:180, y=-70:-30]
+shade mask3[x=165:180, y=-50:-30]
+let nzmask = [x=165:180, y=-50:-30]
+let nzmask = mask3[x=165:180, y=-50:-30]
+shade nzmask
+show data
+Let nzclimdiff = nzmask*tas
+shade nzclimdiff[l=1]
+Let nzclimdiff = nzmask*TAS[d=1]
+shade nzclimdiff[l=1]
+Let landclimdiff = mask3*TAS
+shade landclimdiff[l=1]
+Let landclimdiff = mask3*TAS[d=1]
+shade landclimdiff[l=1]
+let nzclimdiff = landclimdiff[x=165:180, y=-50:-30]
+shade nzclimdiff
+shade nzclimdiff[l=1]
+shade nzclimdiff[l=2]
+shade nzclimdiff[l=3]
+shade nzclimdiff[l=4]
+shade nzclimdiff[l=5]
+list nzclimdiff[y=@ave, x=@ave]
+cancel viewport
+close viewport
+cancel window
+cancel window 1

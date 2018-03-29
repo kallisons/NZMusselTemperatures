@@ -1,0 +1,26 @@
+SET DATA "/Data/CMIP5/climdiff/modeldiff/tas_Amon_multimodel_2070-2099_mclimdiff_1971-2000_woagrid.nc", "/Data/WOA/WOA13/WOA2013_annual_temp.nc"
+
+
+let mask1 = T_AN[k=1] * 0 
+let mask2 = missing(mask1, 1)
+let mask3 = ignore0(mask2)
+
+let landclimdiff = mask3*TAS[d=1]
+
+let nzclimdiff = landclimdiff[x=165:180, y=-50:-30]
+
+list nzclimdiff[y=@ave, x=@ave]
+
+
+JAN:  3.516
+FEB:  3.596
+MAR:  3.479
+APR:  3.172
+MAY:  3.059
+JUN:  3.017
+JUL:  2.841
+AUG:  2.776
+SEP:  2.618
+OCT:  2.468
+NOV:  2.662
+DEC:  3.080
