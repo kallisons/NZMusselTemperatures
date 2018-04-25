@@ -2,11 +2,12 @@
 rm fnames.txt
 
 filepathin=../modelinput/
-filepathout=../modeloutput/
+#filepathout=../modeloutput/
+filepathout=/Data/NZ_MusselModelOutput/modeloutput/
 beddepth=5
-for site in NZSINR  
+for site in NZSIBT NZSINR  
 do
-for point in 050 060 070 080 090 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250 260 270 280 290 300 310 320 330 340 350
+for point in 050 060 070 080 090 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240 250
 do
 for CNTCT in 0.5 
 do
@@ -40,7 +41,7 @@ cp generic_initial_conditions.txt init_conds.txt
 #MAKE COMMENTS
   mkdir ${filepathout}${site}
   mkdir ${filepathout}${site}/height${point}cm/
-  cp THERMO.TXT ${filepathout}${site}/height${point}cm/${site}_${point}cm_bed5cm_${year}.out 
+  cp THERMO.TXT ${filepathout}${site}/height${point}cm/${site}_${point}cm_${year}.out 
   
   rm 2.7.1_ET.tx
   rm 2.7.1_forcing.tx

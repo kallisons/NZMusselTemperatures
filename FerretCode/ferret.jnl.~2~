@@ -1,0 +1,13 @@
+ ! NOAA/PMEL TMAP
+ ! FERRET v7 (optimized)
+ ! Darwin 15.6.0 64-bit - 07/26/16
+ ! 29-Mar-18 23:16     
+
+SET DATA "/Data/CMIP5/climdiff/modeldiff/tas_Amon_multimodel_2070-2099_mclimdiff_1971-2000_woagrid.nc", "/Data/WOA/WOA13/WOA2013_annual_temp.nc"
+let mask1 = T_AN[k=1] * 0
+let mask2 = missing(mask1, 1)
+let mask3 = ignore0(mask2)
+let landclimdiff = mask3*TAS[d=1]
+let nzclimdiff = landclimdiff[x=165:180, y=-50:-30]
+list nzclimdiff[y=@ave, x=@ave]
+shade nzclimdiff[l=1]
